@@ -31,4 +31,4 @@ if __name__ == '__main__':
     twitter_stream = Stream(auth, MyListener())
 
     #This line filter Twitter Streams to capture data by the keywords: 'python', 'javascript', 'ruby'
-    twitter_stream.filter(track=['porn', 'sex', '#porn', '#sex'])
+    twitter_stream.filter(track=['porn', '#porn'])
