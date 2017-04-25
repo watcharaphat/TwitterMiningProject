@@ -1,4 +1,5 @@
 api_keys.py
 *.pyc
 tweets.json
+data
 
