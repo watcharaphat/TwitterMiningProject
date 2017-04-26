@@ -13,10 +13,6 @@ class MyListener(StreamListener):
         try:
             tweet = json.loads(data)
             print "%s %s" % (tweet['created_at'], tweet['text'])
-            client = MongoClient('mongodb://' + MONGO_USERNAME + ':'
-                                 + MONGO_PASSWORD + '@watcharaphat.com')
-            db = client['twitter_db']
-            collection = db['twitter_collection']
             collection.insert(tweet)
 
             return True
@@ -35,6 +31,11 @@ if __name__ == '__main__':
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     twitter_stream = Stream(auth, MyListener())
+
+    client = MongoClient('mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD
+                         + '@watcharaphat.com')
+    db = client['twitter_db']
+    collection = db['twitter_collection']
 
     #This line filter Twitter Streams to capture data by the keywords: '
     twitter_stream.filter(languages=["en"],
