@@ -1,4 +1,3 @@
-#Import the necessary methods from tweepy library
 from api_keys import *
 from mongo_auth import *
 from tweepy.streaming import StreamListener
@@ -38,7 +37,8 @@ if __name__ == '__main__':
     twitter_stream = Stream(auth, MyListener())
 
     #This line filter Twitter Streams to capture data by the keywords: '
-    twitter_stream.filter(track=['porn', 'sex', 'cock', 'dick', 'fuck',
+    twitter_stream.filter(languages=["en"],
+                          track=['porn', 'sex', 'cock', 'dick', 'fuck',
                                  'blowjob', 'handjob', 'pussy', 'MILF',
                                  'gangbang', '#porn', '#sex', '#cock', '#dick',
                                  '#fuck', '#blowjob', "#handjob", '#pussy',
