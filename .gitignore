@@ -1,3 +1,4 @@
+.DS_Store
 api_keys.py
 *.pyc
 tweets.json
