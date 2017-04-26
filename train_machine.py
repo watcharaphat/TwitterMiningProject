@@ -15,8 +15,6 @@ class MyListener(StreamListener):
             print "%s %s" % (tweet['created_at'], tweet['text'])
             collection.insert(
                 {
-                    #"screen_name": tweet['screen_name'],
-                    "time": tweet['created_at'],
                     "text": tweet['text']
                 }
             )
@@ -41,7 +39,7 @@ if __name__ == '__main__':
     client = MongoClient('mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD
                          + '@watcharaphat.com')
     db = client['twitter_db']
-    collection = db['twitter_text']
+    collection = db['twitter_train']
 
     #This line filter Twitter Streams to capture data by the keywords: '
     twitter_stream.filter(languages=["en"],
