@@ -37,7 +37,7 @@ if __name__ == '__main__':
     auth.set_access_token(access_token, access_token_secret)
     twitter_stream = Stream(auth, MyListener())
 
-    #This line filter Twitter Streams to capture data by the keywords: 'python', 'javascript', 'ruby'
+    #This line filter Twitter Streams to capture data by the keywords: '
     twitter_stream.filter(track=['porn', 'sex', 'cock', 'dick', 'fuck',
                                  'blowjob', 'handjob', 'pussy', 'MILF',
                                  'gangbang', '#porn', '#sex', '#cock', '#dick',
