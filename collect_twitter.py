@@ -13,7 +13,7 @@ class MyListener(StreamListener):
         try:
             tweet = json.loads(data)
 
-            if 'RT @' not in tweet['text']:
+            if not tweet['text'].startswith('RT'):
                 print "%s %s" % (tweet['created_at'], tweet['text'])
                 collection.insert(
                     {
