@@ -20,5 +20,5 @@ if __name__ == '__main__':
     printable = set(string.printable)
 
     for document in cursor:
-        s = dumps(document)
-        print filter(lambda x: x in printable, s)
+        print dumps(document, ensure_ascii=False)
+        # print filter(lambda x: x in printable, s)

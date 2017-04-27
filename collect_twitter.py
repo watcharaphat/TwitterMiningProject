@@ -12,17 +12,21 @@ class MyListener(StreamListener):
     def on_data(self, data):
         try:
             tweet = json.loads(data)
-            print "%s %s" % (tweet['created_at'], tweet['text'])
-            collection.insert(
-                {
-                    "screen_name": tweet['user']['screen_name'],
-                    "id_str": tweet['user']['id_str'],
-                    "time": tweet['created_at'],
-                    "text": tweet['text']
-                }
-            )
 
-            return True
+            if not tweet['retweeted'] and 'RT @' not in tweet['text']:
+                print "%s %s" % (tweet['created_at'], tweet['text'])
+                collection.insert(
+                    {
+                        "user": {
+                            "screen_name": tweet['user']['screen_name'],
+                            "id_str": tweet['user']['id_str']
+                        },
+                        "time": tweet['created_at'],
+                        "text": tweet['text']
+                    }
+                )
+
+                return True
 
         except BaseException as e:
             print("--> Error on_data: %s" % str(e))
@@ -42,7 +46,7 @@ if __name__ == '__main__':
     client = MongoClient('mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD
                          + '@watcharaphat.com')
     db = client['twitter_db']
-    collection = db['twitter_ackher']
+    collection = db['ackher']
 
     #This line filter Twitter Streams to capture data by the keywords: '
     twitter_stream.filter(languages=["en"],
