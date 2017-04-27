@@ -46,7 +46,7 @@ if __name__ == '__main__':
     client = MongoClient('mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD
                          + '@watcharaphat.com')
     db = client['twitter_db']
-    collection = db['ackher']
+    collection = db['bad_tweets']
 
     #This line filter Twitter Streams to capture data by the keywords: '
     twitter_stream.filter(languages=["en"],
