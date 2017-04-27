@@ -46,8 +46,7 @@ if __name__ == '__main__':
 
     #This line filter Twitter Streams to capture data by the keywords: '
     twitter_stream.filter(languages=["en"],
-                          track=['porn', 'sex', 'cock', 'dick', 'fuck',
-                                 'blowjob', 'handjob', 'pussy', 'MILF',
-                                 'gangbang', '#porn', '#sex', '#cock', '#dick',
-                                 '#fuck', '#blowjob', "#handjob", '#pussy',
-                                 '#MILF', '#gangbang'])
+                          track=['porn', 'sex', 'cock', 'dick', 'blowjob',
+                                 'handjob', 'pussy', 'MILF', 'gangbang',
+                                 '#porn', '#sex', '#cock', '#dick', '#blowjob',
+                                 "#handjob", '#pussy', '#MILF', '#gangbang'])
