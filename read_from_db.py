@@ -5,20 +5,23 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 import unicodedata
 import string
+from sys import exit
 
 if __name__ == '__main__':
     client = MongoClient('mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD
                          + '@watcharaphat.com')
     db = client['twitter_db']
-    collection = db['twitter_train']
+    collection = db['bad_tweets']
 
     cursor = collection.find(
         {},
         {"text": 1, "_id": 0}
     )
 
-    printable = set(string.printable)
-
+    i = 0
     for document in cursor:
-        print dumps(document, ensure_ascii=False)
-        # print filter(lambda x: x in printable, s)
+        if (i < 100):
+            print dumps(document, ensure_ascii=False)
+            i = i + 1
+        else:
+            exit()
