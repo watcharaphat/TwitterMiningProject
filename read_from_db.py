@@ -5,13 +5,16 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 import unicodedata
 import string
-from sys import exit
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 if __name__ == '__main__':
     client = MongoClient('mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD
                          + '@watcharaphat.com')
     db = client['twitter_db']
-    collection = db['bad_tweets']
+    collection = db['good_tweets']
 
     cursor = collection.find(
         {},
@@ -24,4 +27,4 @@ if __name__ == '__main__':
             print dumps(document, ensure_ascii=False)
             i = i + 1
         else:
-            exit()
+            sys.exit()
