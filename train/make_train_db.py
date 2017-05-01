@@ -29,6 +29,6 @@ if __name__ == '__main__':
             print "%s," % dumps(document, ensure_ascii=False)
             i = i + 1
         elif i == 19999:
-            print dunps(document, ensure_ascii=False)
+            print dumps(document, ensure_ascii=False)
             print ']'
             sys.exit()
