@@ -1,14 +1,5 @@
 # -*- coding: utf-8 -*-
 from textblob.classifiers import NaiveBayesClassifier
-from nltk.corpus import stopwords
-
-stopset = set(stopwords.words('english'))
- 
-def stopword_filtered_word_feats(words):
-    return dict([(word, True) for word in words if word not in stopset])
- 
-evaluate_classifier(stopword_filtered_word_feats)
-
 
 train = [
     ('I love this sandwich.', 'pos'),
@@ -30,9 +21,6 @@ test = [
     ('Gary is a friend of mine.', 'pos'),
     ("I can't believe I'm doing this.", 'neg')
 ]
-
-for item in train:
-    print type(item)
 
 cl = NaiveBayesClassifier(train)
 print cl.accuracy(test)
