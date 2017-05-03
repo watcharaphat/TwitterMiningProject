@@ -14,7 +14,7 @@ if __name__ == '__main__':
     client = MongoClient('mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD
                          + '@watcharaphat.com')
     db = client['twitter_db']
-    collection = db['good_tweets']
+    collection = db['bad_tweets']
 
     cursor = collection.find(
         {},
@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     i = 0
     for document in cursor:
-        if (i < 100):
+        if (i < 500):
             print dumps(document, ensure_ascii=False)
             i = i + 1
         else:
