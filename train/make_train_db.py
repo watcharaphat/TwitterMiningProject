@@ -26,7 +26,7 @@ if __name__ == '__main__':
     print '['
     for document in cursor:
         if i < 19999:
-            print "%s," % dumps(document, ensure_ascii=False)
+            print "  %s," % dumps(document, ensure_ascii=False)
             i = i + 1
         elif i == 19999:
             print dumps(document, ensure_ascii=False)
