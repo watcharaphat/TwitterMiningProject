@@ -12,9 +12,14 @@ sys.setdefaultencoding('utf8')
 
 if __name__ == '__main__':
     client = MongoClient('mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD
-                         + '@watcharaphat.com')
+                         + '@watcharaphat.com/twitter_db')
     db = client['twitter_db']
-    collection = db['bad_tweets']
+
+    if(len(sys.argv) < 2):
+        print "usage: python read_from_db [collection_name]"
+        sys.exit()
+
+    collection = db[sys.argv[1]]
 
     cursor = collection.find(
         {},
@@ -23,7 +28,7 @@ if __name__ == '__main__':
 
     i = 0
     for document in cursor:
-        if (i < 500):
+        if (i < 10000):
             print dumps(document, ensure_ascii=False)
             i = i + 1
         else:
